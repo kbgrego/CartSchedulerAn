@@ -4,14 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SettingsService {
-  Settings: Setting[]; /* = [
-    { "label": "Chat Id", "name": "ChatId", "value": "673371043" },
-    { "label": "Bot Id", "name": "ChatBotId", "value": "6244748070" },
-    { "label": "Bot token", "name": "ChatBotToken", "value": "AAHkJGXCEb9L4K4OQoW7pEPEF1d3W-v95f0" },
-  ];
-  ChatId: number = 673371043;
-  ChatBotId: string = '6244748070';
-  ChatBotToken: string = 'AAHkJGXCEb9L4K4OQoW7pEPEF1d3W-v95f0'; */
+  Settings: Setting[]; 
 
   DefaultSettings: Setting[] = [
     { "label": "Chat Id", "name": "ChatId", "value": "" },
@@ -23,7 +16,13 @@ export class SettingsService {
 
   constructor() {
     let sets = window.localStorage.getItem('cart-settings');
-    this.Settings = JSON.parse(sets == null ? JSON.stringify(this.DefaultSettings) : sets);
+    console.log(sets);
+    if (sets != null) {
+      let loadSets = JSON.parse(sets);
+      this.Settings = loadSets;
+    } else {
+      this.Settings = this.DefaultSettings;
+    }
   }
 
   getSettings() {
@@ -36,7 +35,7 @@ export class SettingsService {
   }
 
   store(): void {
-    window.localStorage.setItem('bot-settings', JSON.stringify(this.Settings));
+    window.localStorage.setItem('cart-settings', JSON.stringify(this.Settings));
   }
 }
 
