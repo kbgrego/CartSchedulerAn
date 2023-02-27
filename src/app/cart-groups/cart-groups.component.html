@@ -1,0 +1,21 @@
+<div class="cart-shift">
+    <div class="cart-shift-title">{{schedule.cart}}</div>
+    <div class="cart-shift-date"><span>{{schedule.getDate()}}</span><span>{{schedule.getWeekday()}}</span></div>
+    <div class="cart-shift-time">
+        <span>{{schedule.time}}</span><span>
+            <input type="checkbox" [(ngModel)]="schedule.print" />
+        </span>
+    </div>
+    <table>
+        <thead>
+            <tr><th>#</th><th>name</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1.</td><td><input id="shift-1" type="text" [(ngModel)]="schedule.witn[0]" /></td></tr>
+            <tr><td>2.</td><td><input id="shift-2" type="text" [(ngModel)]="schedule.witn[1]" /></td></tr>
+            <tr><td>3.</td><td><input id="shift-3" type="text" [(ngModel)]="schedule.witn[2]" /></td></tr>
+            <tr><td>4.</td><td><input id="shift-4" type="text" [(ngModel)]="schedule.witn[3]" /></td></tr>
+        </tbody>
+    </table>
+    <button mat-button (click)="onClickRemove(schedule)">Delete</button>
+</div>

@@ -1,0 +1,15 @@
+<h1>Settings</h1>
+<div class="cart-settings-panel">
+    <div class="cart-settings-section">
+        <ul>
+            <li *ngFor="let setting of settings">
+                <div class="cart-setting">
+                    <span>{{setting.label}}</span> <br />
+                    <input type="text" [(ngModel)]="setting.value" />
+                    {{setting.value}}
+                </div>
+            </li>
+        </ul>
+        <button (click)="onClickStore()">Store</button>
+    </div>
+</div>
