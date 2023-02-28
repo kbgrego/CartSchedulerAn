@@ -67,10 +67,10 @@ export class ManagementComponent implements OnInit {
   }
 
   onSend(): void {
-    if (this.schedules != undefined)
-      for (let i = 0; i < this.schedules.length; i++)
-        if (this.schedules[i].print)
-          this.telegram.sendSchedule(this.schedules[i]);
+    if (this.schedules != undefined) {
+      let sorted = Schedule.sortForSending(this.schedules);      
+      sorted.forEach(x => this.telegram.sendSchedule(x));
+    }
   }
 
   onClickStore(): void {

@@ -29,18 +29,26 @@ export class Schedule implements iSchedule {
   }
 
   getDate(): string {
-    let curWeekday = new Date().getDay();
     let date = new Date();
+    let curWeekday = date.getDay();
     if (this.weekday < curWeekday)
-      date = this.addDays(new Date(), 7 + this.weekday - curWeekday);
+      date = this.addDays(date, 7 + this.weekday - curWeekday);
     else
-      date = this.addDays(new Date(), this.weekday - curWeekday);
+      date = this.addDays(date, this.weekday - curWeekday);
     return (moment(date)).format('(DD.MM)');
   }
 
   addDays(date: Date, days: number): Date {
     date.setDate(date.getDate() + days);
     return date;
+  }
+
+  static sortForSending(schedules: Schedule[]) {
+    let curWeekday = new Date().getDay();
+    var sorted = schedules.filter(x => x.print)
+                          .sort((x, y) => x.time.localeCompare(y.time))
+                          .sort((x, y) => (x.weekday <= curWeekday ? 7 : 0 ) + x.weekday - y.weekday - (y.weekday <= curWeekday ? 7 : 0 ));
+    return sorted;
   }
 }
 
