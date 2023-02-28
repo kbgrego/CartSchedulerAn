@@ -40,7 +40,6 @@ export class ManagementComponent implements OnInit {
       for (var i = 0; i < sorted.length - 1; i++) {        
         if (sorted[i].time != sorted[i + 1].time)
           sorted[i].divBreak = true;
-        this.logger.log('compare ' + (sorted[i].divBreak));
       }
 
       return sorted;
@@ -69,8 +68,10 @@ export class ManagementComponent implements OnInit {
   onSend(): void {
     if (this.schedules != undefined) {
       let sorted = Schedule.sortForSending(this.schedules);      
-      for(let i=0;i<sorted.length;i++)
+      for(let i=0;i<sorted.length;i++) {
+        console.log(`${sorted[i].cart} ${sorted[i].getWeekday()} ${sorted[i].time}`);
         this.telegram.sendSchedule(sorted[i]);
+      }
     }
   }
 

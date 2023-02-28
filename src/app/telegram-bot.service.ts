@@ -39,9 +39,10 @@ export class TelegramBotService {
 
     var url = this.botLink + '/sendMessage';
 
-    this.logger.log(formData);
+    //this.logger.log(formData);
 
     this.http.post(url, formData, {headers: headers}).subscribe();
+    this.sleep(3000);
   }
 
   sendSchedule(schedule: Schedule) {
@@ -57,8 +58,12 @@ export class TelegramBotService {
     mes = mes.replaceAll('.', '\\.');
     mes = mes.replaceAll('-', '\\-');
 
-    console.log(mes);
+    //console.log(mes);
     this.sendBotRequestSendMessage(mes);
+  }
+
+  sleep(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }
