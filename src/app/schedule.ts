@@ -44,7 +44,8 @@ export class Schedule implements iSchedule {
   }
 
   copy(): Schedule {
-    return new Schedule(this.cart, this.time, this.weekday, this.print, this.witn);
+    let witn = this.witn.slice();
+    return new Schedule(this.cart, this.time, this.weekday, this.print, witn);
   }
 
   validate(): boolean {
