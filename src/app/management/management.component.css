@@ -1,17 +1,18 @@
-div.cart-sheet {
-    /* display: flex; */
-    background-color: #56b3a8;
+.cart-weekday-title {
+  background-color: rgb(42, 143, 136);
+  padding: 10px;
 }
-
 
 div.cart-day {
   display: contents;
 }
 
-div.cart-time {
+.cart-time {
   display: flex;
-  background-color: #50a3a0;
   border-radius: 10px;
+  margin: 10px;
+  margin-right: 10px;
+  
 }
 
 div.cart-break {
@@ -19,20 +20,6 @@ div.cart-break {
   height: 0px;
 }
 
-div.cart-button-panel {
-  margin: 15px;
-  background-color: #50a3a0;
-  padding: 15px;
-}
-
-button {
-  margin: 10px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 5px;
-  width: 150px;
-  height: 40px; 
-}
 
 div.cart-weekday-title {
   margin: 15px;

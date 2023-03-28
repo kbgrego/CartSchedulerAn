@@ -19,3 +19,50 @@ code {
   border-color: #1861ac;
 }
 
+body {
+  font-size: medium;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  font-size: small;
+  margin: 10px;
+  border-radius: 5px;
+  border-width: 1px;
+  background-color: #c2dde5;
+}
+
+button:hover {
+  background-color: #9dbfc9;
+}
+
+button:active {
+  background-color: #7aa1ad;
+  color: white;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+  font-size: small;
+  margin: 2px;
+  border-radius: 5px;
+  border-width: 1px;
+  background-color: #ffffff;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+}
+
+select {
+  width: 200px;
+  height: 30px;
+  font-size: small;
+  margin: 2px;
+  border-radius: 5px;
+  border-width: 1px;
+  background-color: #ffffff;
+}

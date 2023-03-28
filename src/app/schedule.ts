@@ -12,7 +12,7 @@ export class Schedule implements iSchedule {
   public witn: Array<string> = [];
   public divBreak: boolean = false;
 
-  constructor(cart: string = '', time: string = '', weekday: number = 0, print: boolean = false, witn: Array<string> = []) {
+  constructor(cart: string = '', time: string = '', weekday: number = 0, print: boolean = false, witn: Array<string> = ['','','','']) {
     this.cart = cart;
     this.time = time;
     this.weekday = weekday;
@@ -43,13 +43,31 @@ export class Schedule implements iSchedule {
     return date;
   }
 
+  copy(): Schedule {
+    return new Schedule(this.cart, this.time, this.weekday, this.print, this.witn);
+  }
+
+  validate(): boolean {
+    return this.cart != '' &&
+           this.time != '' &&
+           this.weekday != 0;
+  }
+
+  empty(): void {
+    this.cart = '';
+    this.time = '';
+    this.weekday = 0;
+    this.print = false;
+    this.witn = ['','','',''];
+  }
+
   static sortForSending(schedules: Schedule[]) {
     let curWeekday = new Date().getDay();
-    var sorted = schedules.filter(x => x.print)
+    var sorted = schedules.filter(x => x.weekday > 0) // x.print)
                           .sort((x, y) => x.time.localeCompare(y.time))
                           .sort((x, y) => (x.weekday <= curWeekday ? 7 : 0 ) + x.weekday - y.weekday - (y.weekday <= curWeekday ? 7 : 0 ));
     return sorted;
-  }
+  }  
 }
 
 export interface iSchedule {

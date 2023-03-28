@@ -1,22 +1,26 @@
+
 <div class="cart-sheet">
-    <div class="cart-weekday-title">New cart</div>
-    <app-cart-groups-new></app-cart-groups-new>
+    <div>
+      <div class="cart-weekday-title">Новая группа</div>
+      <div class="cart-weekday-cards">
+        <app-cart-groups-new></app-cart-groups-new>
+      </div>
+    </div>
 
     <div class="cart-day" *ngFor="let day of scheduleWeek">
-        <div class="cart-weekday-title">{{weekdays[day]}}</div>
-        <div class="cart-time" *ngFor=" let time of getScheduleDayTime(day) ">
+       <div class="cart-weekday-title">{{weekdays[day]}}</div>
+       <div class="cart-time" *ngFor=" let time of getScheduleDayTime(day) ">
             <div class="cart-day">
                 <div class="cart-group" *ngFor="let schedule of getSchedule(day, time)">
                     <app-cart-groups [schedule]="schedule"></app-cart-groups>
                 </div>
             </div>
             <div class="cart-break"></div>
-        </div>
+        </div> 
     </div>
 
     <div class="cart-button-panel">
-        <button mat-button (click)="onClick()">click on me</button>
-        <button mat-button (click)="onSend()">print</button>
-        <button mat-button (click)="onClickStore()">Store</button>
+        <button mat-button (click)="onSend()">Отправить</button>
+        <button mat-button (click)="onClickStore()">Сохранить</button>
     </div>
 </div>

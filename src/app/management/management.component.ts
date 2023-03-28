@@ -61,10 +61,6 @@ export class ManagementComponent implements OnInit {
     return times;
   }
 
-  onClick(): void {
-    this.telegram.sendBotRequestSendMessage('test');
-  }
-
   onSend(): void {
     if (this.schedules != undefined) {
       let sorted = Schedule.sortForSending(this.schedules);      
@@ -84,7 +80,7 @@ export class ManagementComponent implements OnInit {
   }
 
   addNewSchedule(schedule: Schedule): void {
-    this.scheduleService.add(schedule);
-    this.scheduleNew = new Schedule();
+    this.scheduleService.add(schedule.copy());
+    //ыschedule.empty();
   }
 }

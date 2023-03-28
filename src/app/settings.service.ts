@@ -9,8 +9,7 @@ export class SettingsService {
   DefaultSettings: Setting[] = [
     { "label": "Chat Id", "name": "ChatId", "value": "" },
     { "label": "Bot Id", "name": "ChatBotId", "value": "" },
-    { "label": "Bot token", "name": "ChatBotToken", "value": "" },
-    { "label": "Cart list", "name": "CartList", "value": "" },
+    { "label": "Bot token", "name": "ChatBotToken", "value": "" }
   ];
 
 

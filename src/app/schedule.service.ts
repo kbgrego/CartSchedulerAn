@@ -11,6 +11,10 @@ export class ScheduleService {
   Schedules = SCHEDULES;
 
   constructor(private logger: Logger) {
+    this. load();
+  }
+
+  load(): void {
     let stored = window.localStorage.getItem('schedule-settings');
     if (stored != null) {
       var storedList: iSchedule[] = JSON.parse(stored);
@@ -20,8 +24,7 @@ export class ScheduleService {
         else
           return new Schedule();
       });
-    }
-    //if (stored != null) this.Schedules = <iSchedule[]>;
+    } 
   }
 
   get(date: Date): Schedule[] {
@@ -42,9 +45,10 @@ export class ScheduleService {
   }
 
   add(schedule: Schedule) {
-    this.Schedules.push(schedule);
-    this.Schedules = this.Schedules.filter(x => x.cart != '');
-    this.store();
+    if(schedule.validate()) {
+      this.Schedules.push(schedule);
+      this.store();
+    }
   }
 
   delete(schedule: Schedule) {
@@ -54,7 +58,6 @@ export class ScheduleService {
 
     if(ind != -1)
       delete this.Schedules[ind];
-    this.Schedules = this.Schedules.filter(x => x.cart != '');
     this.store();
   }
 }

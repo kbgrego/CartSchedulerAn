@@ -1,34 +1,27 @@
-div.cart-shift {
-  width: 200px;
-  font-size: 12px;
-  background-color: lightgrey;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 15px;
-}
-
-div.cart-shift-title {
-  text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-div.cart-shift-date span:first-child {
-  font-weight:bold;
-  margin-right: 40px;
-}
-
-div.cart-shift-time {
-}
-
-th {
+.cart-shift {
+    background-color: #98d2c2;
+    padding: 16px;   
+    width: 280px; 
+  }
+  
+  div.cart-shift-title {
     text-align: center;
-}
+    font-size: 18px;
+    font-weight: bold;
+  }
 
-input {
+  div.cart-shift-date span:first-child {
+    font-weight:bold;
+    margin-right: 40px;
+  }
+  
+  .cart-shift input, .cart-shift select {
+    height: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: auto;
+  }
+  
+  .cart-shift table {
     width: 100%;
-}
-
-table {
-    width: 100%;
-}
+  } 

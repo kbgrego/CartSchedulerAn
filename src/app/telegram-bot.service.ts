@@ -42,7 +42,7 @@ export class TelegramBotService {
     //this.logger.log(formData);
 
     this.http.post(url, formData, {headers: headers}).subscribe();
-    this.sleep(3000);
+    this.sleep(500);
   }
 
   sendSchedule(schedule: Schedule) {
@@ -62,8 +62,12 @@ export class TelegramBotService {
     this.sendBotRequestSendMessage(mes);
   }
 
-  sleep(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+  sleep(milliseconds:number) {
+    const date = Date.now();
+    let currentDate = null;
+    do {
+      currentDate = Date.now();
+    } while (currentDate - date < milliseconds);
   }
 
 }
