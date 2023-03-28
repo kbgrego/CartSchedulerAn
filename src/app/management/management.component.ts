@@ -66,6 +66,17 @@ export class ManagementComponent implements OnInit {
       let sorted = Schedule.sortForSending(this.schedules);      
       for(let i=0;i<sorted.length;i++) {
         console.log(`${sorted[i].cart} ${sorted[i].getWeekday()} ${sorted[i].time}`);
+        if(sorted[i].print)
+          this.telegram.sendSchedule(sorted[i]);
+      }
+    }
+  }
+
+  onSendAll(): void {
+    if (this.schedules != undefined) {
+      let sorted = Schedule.sortForSending(this.schedules);
+      for(let i=0;i<sorted.length;i++) {
+        console.log(`${sorted[i].cart} ${sorted[i].getWeekday()} ${sorted[i].time}`);
         this.telegram.sendSchedule(sorted[i]);
       }
     }
