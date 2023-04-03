@@ -29,13 +29,12 @@ export class Schedule implements iSchedule {
   }
 
   getDate(): string {
-    let date = new Date();
-    let curWeekday = date.getDay();
-    if (this.weekday < curWeekday)
-      date = this.addDays(date, 7 + this.weekday - curWeekday);
-    else
-      date = this.addDays(date, this.weekday - curWeekday);
-    return (moment(date)).format('(DD.MM)');
+    const targetWeekday = this.weekday;
+    const currentDate = new Date();
+    const currentWeekday = currentDate.getDay();
+    const daysUntilTarget = (targetWeekday - currentWeekday + 7) % 7;
+    const targetDate = new Date(currentDate.getTime() + daysUntilTarget * 24 * 60 * 60 * 1000);
+    return moment(targetDate).format('(DD.MM)');
   }
 
   addDays(date: Date, days: number): Date {
