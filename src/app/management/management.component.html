@@ -1,4 +1,6 @@
+<div>
 
+</div>
 <div class="cart-sheet">
     <div>
       <div class="cart-weekday-title">Новая группа</div>
@@ -8,16 +10,21 @@
     </div>
 
     <div class="cart-day" *ngFor="let day of scheduleWeek">
-       <div class="cart-weekday-title">{{weekdays[day]}}</div>
-       <div class="cart-time" *ngFor=" let time of getScheduleDayTime(day) ">
-            <div class="cart-day">
-                <div class="cart-group" *ngFor="let schedule of getSchedule(day, time)">
-                    <app-cart-groups [schedule]="schedule"></app-cart-groups>
+    <table>
+        <tr>
+            <th class="cart-weekday-title">{{weekdays[day]}}</th>
+        </tr>
+        <tr class="cart-time" *ngFor=" let time of getScheduleDayTime(day) ">
+            <td>
+                <div class="cart-day">
+                    <div class="cart-group" *ngFor="let schedule of getSchedule(day, time)">
+                        <app-cart-groups [schedule]="schedule"></app-cart-groups>
+                    </div>
                 </div>
-            </div>
-            <div class="cart-break"></div>
-        </div> 
-    </div>
+            </td>
+        </tr>
+    </table>
+    </div>  
 
     <div class="cart-button-panel">
         <button mat-button (click)="onSend()">Отправить</button>
