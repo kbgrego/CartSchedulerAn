@@ -1,16 +1,38 @@
-<h1>Settings</h1>
+<h1 class="title">Settings</h1>
 <div class="cart-settings-panel">
-    <div class="cart-settings-section">
-        <ul>
-            <li *ngFor="let setting of settings">
-                <div class="cart-setting">
-                    <span>{{setting.label}}</span> <br />
-                    <input type="text" [(ngModel)]="setting.value" />
-                    {{setting.value}}
-                </div>
-            </li>
-        </ul>
-        <button mat-button (click)="onClickTest()">Test</button>        
-        <button mat-button (click)="onClickStore()">Store</button>
-    </div>
+  <div class="cart-settings-section">
+    <ul>
+      <li *ngFor="let setting of settings">
+        <div class="cart-setting">
+          <span class="setting-label">{{setting.label}}</span> <br />
+          <input type="text" [(ngModel)]="setting.value" class="setting-input" />
+          <span class="setting-value">{{setting.value}}</span>
+        </div>
+      </li>
+    </ul>
+
+    <button mat-button class="test-button" (click)="onClickTest()">Test</button>        
+    <button mat-button class="save-button" (click)="onClickStore()">Save</button>
+  </div>
+
+  <div class="cart-settings-section">
+    <table class="items-table">
+      <thead>
+        <tr>
+          <th class="table-header">Name</th>
+          <th class="table-header">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i = index;">
+          <td><input type="text" [(ngModel)]="item.name" class="table-input"></td>
+          <td>
+            <button class="delete-button" (click)="removeItem(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-row-button" (click)="addItem()">Add Row</button>
+    <button class="save-item-button" (click)="saveItem(0)">Save</button>
+  </div>
 </div>

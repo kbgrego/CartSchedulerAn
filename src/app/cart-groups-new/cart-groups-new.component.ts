@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Schedule } from '../schedule';
 import { ScheduleService } from '../schedule.service';
 import { ManagementComponent } from '../management/management.component';
+import { SettingsService } from '../settings.service';
+import { Item } from '../item';
 
 @Component({
   selector: 'app-cart-groups-new',
@@ -14,7 +16,9 @@ export class CartGroupsNewComponent implements OnInit {
 
   scheduleWeek: number[] = [3, 4, 5, 6, 7, 1, 2];
 
-  constructor(private scheduleService: ScheduleService, private managementComponent: ManagementComponent) { }
+  carts: Item[] = this.settings.getCarts();
+
+  constructor(private managementComponent: ManagementComponent, private settings: SettingsService) { }
 
   ngOnInit(): void {
   }

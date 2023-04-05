@@ -1,4 +1,19 @@
-.cart-shift {
+  #cart-groups-new-title {
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+  }
+
+  #cart-groups-new-weekday {
+    font-size: 1.0rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .cart-shift {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -14,13 +29,10 @@
     font-size: 1.25rem;
     font-weight: bold;
     color: #333;
-    margin-bottom: 0.5rem;
   }
   
   .cart-shift-date {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem;
+
   }
   
   .cart-shift-time {

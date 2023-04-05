@@ -1,0 +1,90 @@
+/* settings.component.css */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .cart-settings-panel {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cart-settings-section {
+    margin-right: 20px;
+  }
+  
+  .cart-setting {
+    margin-bottom: 10px;
+  }
+  
+  .setting-label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .setting-input {
+    width: 200px;
+    padding: 5px;
+    margin-right: 10px;
+  }
+  
+  .setting-value {
+    font-style: italic;
+  }
+  
+  .test-button,
+  .save-button,
+  .delete-button,
+  .add-row-button,
+  .save-item-button {
+    margin-right: 10px;
+  }
+  
+  .table-header {
+    font-weight: bold;
+  }
+  
+  .table-input {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .delete-button {
+    color: red;
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  
+  .delete-button:hover {
+    color: white;
+    background-color: red;
+  }
+  
+  .add-row-button {
+    color: green;
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  
+  .add-row-button:hover {
+    color: white;
+    background-color: green;
+  }
+  
+  .save-item-button {
+    color: blue;
+    background-color: white;
+    border: 1px solid blue;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  
+  .save-item-button:hover {
+    color: white;
+    background-color: blue;
+  }
