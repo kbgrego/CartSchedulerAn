@@ -1,20 +1,41 @@
 <div class="cart-shift">
     <div class="cart-shift-title">{{schedule.cart}}</div>
-    <div class="cart-shift-date"><span>{{schedule.getDate()}}</span><span>{{schedule.getWeekday()}}</span></div>
-    <div class="cart-shift-time">
-        <span>{{schedule.time}}</span><span>
+    <div class="cart-shift-haeder"><div>{{schedule.getDate()}}</div><div>{{schedule.getWeekday()}}</div></div>
+    <div class="cart-shift-haeder">
+        <div>{{schedule.time}}</div>
+        <div>
             <input type="checkbox" [(ngModel)]="schedule.print" />
-        </span>
+        </div>
     </div>
-    <table>
+    <table class="cart-shift-table">
         <thead>
             <tr><th>#</th><th>Возвещатель</th></tr>
         </thead>
         <tbody>
-            <tr><td>1.</td><td><input id="shift-1" type="text" [(ngModel)]="schedule.witn[0]" /></td></tr>
-            <tr><td>2.</td><td><input id="shift-2" type="text" [(ngModel)]="schedule.witn[1]" /></td></tr>
-            <tr><td>3.</td><td><input id="shift-3" type="text" [(ngModel)]="schedule.witn[2]" /></td></tr>
-            <tr><td>4.</td><td><input id="shift-4" type="text" [(ngModel)]="schedule.witn[3]" /></td></tr>
+            <tr><td>1.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[0]">
+                    <option></option>
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>2.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[1]">
+                    <option></option>
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>3.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[2]">
+                    <option></option>
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>4.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[3]">
+                    <option></option>
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
         </tbody>
     </table>
     <button mat-button (click)="onClickRemove(schedule)">Удалить</button>

@@ -1,44 +1,54 @@
 <div class="cart-shift">
-    <div>
-        <span>Стенд</span>
-        <select id="cart-groups-new-title" [(ngModel)]="schedule.cart">
-            <option *ngFor="let cart of carts" value={{cart.name}}>{{cart.name}}</option>
-        </select>
+    <div class="cart-shift-haeder">
+        <div>Стенд</div>
+        <div>
+            <select id="cart-groups-new-title" [(ngModel)]="schedule.cart">
+                <option *ngFor="let cart of carts" value={{cart.name}}>{{cart.name}}</option>
+            </select>
+        </div>
     </div>
-    <div class="cart-shift-date">
-        <span>День недели</span>
-        <select id="cart-groups-new-weekday" [(ngModel)]="schedule.weekday">
-            <option *ngFor="let day of scheduleWeek" value={{day}}>{{getWeekday(day)}}</option>
-        </select>
-    </div>
-    <div class="cart-shift-time">
-        <span>Время</span>
-        <select id="cart-groups-new-time" [(ngModel)]="schedule.time">
-            <option *ngFor="let time of times" value={{time.time}}>{{time.time}}</option>
-        </select>
-    </div>
-    <table>
+    <div class="cart-shift-haeder">
+        <div>День недели</div>
+        <div>
+            <select id="cart-groups-new-weekday" [(ngModel)]="schedule.weekday">
+                <option *ngFor="let day of scheduleWeek" value={{day}}>{{getWeekday(day)}}</option>
+            </select>
+        </div>
+    </div>    
+    <div class="cart-shift-haeder">
+        <div class="cart-shift-haeder-title">Время</div>
+        <div>
+            <select id="cart-groups-new-time" [(ngModel)]="schedule.time">
+                <option *ngFor="let time of times" value={{time.time}}>{{time.time}}</option>
+            </select>
+        </div>
+    </div>    
+    <table class="cart-shift-table">
         <thead>
             <tr><th>#</th><th>Возвещатель</th></tr>
         </thead>
         <tbody>
             <tr><td>1.</td><td>
                 <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[0]">
+                    <option></option>
                     <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
                 </select>
             </td></tr>
             <tr><td>2.</td><td>
                 <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[1]">
+                    <option></option>
                     <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
                 </select>
             </td></tr>
             <tr><td>3.</td><td>
                 <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[2]">
+                    <option></option>
                     <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
                 </select>
             </td></tr>
             <tr><td>4.</td><td>
                 <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[3]">
+                    <option></option>
                     <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
                 </select>
             </td></tr>
