@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Logger } from './logger.service';
 import { Schedule } from './schedule';
 import { SettingsService } from './settings.service';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
+interface TelegramApiResponse {
+  ok: boolean;
+  result?: {
+    message_id: number;
+  };
+  error_code?: number;
+  description?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TelegramBotService {
   botLink:string = "";
 
@@ -23,29 +34,34 @@ export class TelegramBotService {
 
   sendCartSchedulePolls(): void { }
 
-  sendBotRequestSendMessage(message: string): void {
-    var formData = JSON.stringify(
-      {
-        "chat_id": this.settingsService.get('ChatId'),
-        "text": message,
-        "parse_mode": "MarkdownV2",
-        "disable_notification": true
-      });
+  sendBotRequestSendMessage(message: string): Observable<number> {
+    const formData = {
+      chat_id: this.settingsService.get('ChatId'),
+      text: message,
+      parse_mode: 'MarkdownV2',
+      disable_notification: true
+    };
 
-    var headers = new HttpHeaders({
-      "Content-Type": "application/json",
-      "Accept": "application/json"
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
     });
 
-    var url = this.botLink + '/sendMessage';
+    const url = `${this.botLink}/sendMessage`;
 
-    //this.logger.log(formData);
-
-    this.http.post(url, formData, {headers: headers}).subscribe();
-    this.sleep(500);
+    return this.http.post<TelegramApiResponse>(url, JSON.stringify(formData), { headers }).pipe(
+      map(response => {
+        const messageId = response.result?.message_id;
+        if (!messageId) {
+          throw new Error('Unable to extract messageId from response');
+        }
+        return messageId;
+      }),
+      catchError(error => throwError(error))
+    );
   }
 
-  sendSchedule(schedule: Schedule) {
+  sendSchedule(schedule: Schedule): Observable<number> {
     var mes = `\\[${schedule.cart}\\] *${schedule.getWeekday()}* ${schedule.getDate()} \n`;
     mes += '_' + schedule.time + '_\n';
     mes += `1. ${schedule.witn[0]} \n`;
@@ -59,7 +75,36 @@ export class TelegramBotService {
     mes = mes.replaceAll('-', '\\-');
 
     //console.log(mes);
-    this.sendBotRequestSendMessage(mes);
+    if(schedule.messageId != 0) {
+      this.sendBotRequestDeleteMessage(schedule.messageId).subscribe();
+      schedule.messageId = 0;
+    }
+    
+    return this.sendBotRequestSendMessage(mes);
+  }
+
+  sendBotRequestDeleteMessage(messageId: number): Observable<boolean> {
+    const formData = {
+      chat_id: this.settingsService.get('ChatId'),
+      message_id: messageId
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    });
+
+    const url = `${this.botLink}/deleteMessage`;
+
+    return this.http.post<TelegramApiResponse>(url, JSON.stringify(formData), { headers }).pipe(
+      map(response => {
+        if (!response.ok) {
+          throw new Error(response.description || 'Unknown error occurred');
+        }
+        return true;
+      }),
+      catchError(error => throwError(error))
+    );
   }
 
   sleep(milliseconds:number) {

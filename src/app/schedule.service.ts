@@ -20,7 +20,7 @@ export class ScheduleService {
       var storedList: iSchedule[] = JSON.parse(stored);
       this.Schedules = storedList.map(x => {
         if (x != null)
-          return new Schedule(x.cart, x.time, x.weekday, false, x.witn);
+          return new Schedule(x.cart, x.time, x.weekday, false, x.witn, x.messageId);
         else
           return new Schedule();
       });
@@ -39,7 +39,8 @@ export class ScheduleService {
         cart: x.cart,
         time: x.time,
         weekday: x.weekday,
-        witn: x.witn
+        witn: x.witn,
+        messageId: x.messageId
       });
     window.localStorage.setItem('schedule-settings', JSON.stringify(store));
   }

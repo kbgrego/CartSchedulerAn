@@ -11,13 +11,15 @@ export class Schedule implements iSchedule {
   public print: boolean = false;
   public witn: Array<string> = [];
   public divBreak: boolean = false;
+  public messageId: number = 0;
 
-  constructor(cart: string = '', time: string = '', weekday: number = 0, print: boolean = false, witn: Array<string> = ['','','','']) {
+  constructor(cart: string = '', time: string = '', weekday: number = 0, print: boolean = false, witn: Array<string> = ['','','',''], messageId: number = 0) {
     this.cart = cart;
     this.time = time;
     this.weekday = weekday;
     this.print = print;
     this.witn = witn;
+    this.messageId = messageId;
   }
 
   public static getWeekday(weekday: number): string {
@@ -44,7 +46,7 @@ export class Schedule implements iSchedule {
 
   copy(): Schedule {
     let witn = this.witn.slice();
-    return new Schedule(this.cart, this.time, this.weekday, this.print, witn);
+    return new Schedule(this.cart, this.time, this.weekday, this.print, witn, this.messageId);
   }
 
   validate(): boolean {
@@ -59,6 +61,7 @@ export class Schedule implements iSchedule {
     this.weekday = 0;
     this.print = false;
     this.witn = ['','','',''];
+    this.messageId = 0;
   }
 
   static sortForSending(schedules: Schedule[]) {
@@ -75,4 +78,5 @@ export interface iSchedule {
   time: string;
   weekday: number;
   witn: string[];
+  messageId: number;
 }
