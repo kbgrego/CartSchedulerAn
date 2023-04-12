@@ -60,4 +60,13 @@ export class ScheduleService {
       delete this.Schedules[ind];
     this.store();
   }
+
+  deleteAll() {
+    // loop that goes through the array and deletes each item
+    for (let i = 0; i < this.Schedules.length; i++) {
+      delete this.Schedules[i];
+    }
+    
+    this.store();
+  }
 }

@@ -1,4 +1,30 @@
 /* settings.component.css */
+.settings-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-settings-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.cart-settings-section-1 {
+  grid-column: 1 / 2;
+}
+
+.cart-settings-section-2 {
+  grid-column: 2 / 3;
+}
+
+.cart-settings-section-3 {
+  grid-column: 3 / 4;
+}
+
 .title {
     font-size: 24px;
     font-weight: bold;

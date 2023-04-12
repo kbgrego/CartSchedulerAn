@@ -94,4 +94,8 @@ export class ManagementComponent implements OnInit {
     this.scheduleService.add(schedule.copy());
     //ыschedule.empty();
   }
+
+  onScheduleDeleteAll(): void {
+    this.scheduleService.deleteAll();
+  }
 }

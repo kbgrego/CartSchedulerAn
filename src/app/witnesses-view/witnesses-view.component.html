@@ -1,0 +1,46 @@
+<table>
+    <thead>
+      <tr>
+        <th class="table-header">Имя</th>
+        <!-- <th>Telegram Name</th> -->
+        <th class="table-header">Активный</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let witness of witnesses; let i = index">
+        <td>
+          <input type="text" [(ngModel)]="witnesses[i].name">
+        </td>
+<!--
+        <td>
+          <input type="text" [(ngModel)]="witnesses[i].telegramName">
+        </td>
+-->                
+        <td>
+            <input type="checkbox" [(ngModel)]="witnesses[i].activated">
+        </td>
+        <td>
+          <button (click)="deleteRow(i)"  class="delete">Удалить</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" [(ngModel)]="newWitness.name">
+        </td>
+<!--
+        <td>
+          <input type="text" [(ngModel)]="newWitness.telegramName">
+        </td>
+-->                
+        <td>
+          <input type="checkbox" [(ngModel)]="newWitness.activated">
+        </td>
+        <td>
+          <button (click)="addRow()">Добавить</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <button (click)="saveChanges()">Сохранить</button>

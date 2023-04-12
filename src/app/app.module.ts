@@ -10,6 +10,7 @@ import { ManagementComponent } from './management/management.component';
 import { CartGroupsComponent } from './cart-groups/cart-groups.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CartGroupsNewComponent } from './cart-groups-new/cart-groups-new.component';
+import { WitnessesViewComponent } from './witnesses-view/witnesses-view.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CartGroupsNewComponent } from './cart-groups-new/cart-groups-new.compon
     ManagementComponent,
     CartGroupsComponent,
     SettingsComponent,
-    CartGroupsNewComponent
+    CartGroupsNewComponent,
+    WitnessesViewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +28,7 @@ import { CartGroupsNewComponent } from './cart-groups-new/cart-groups-new.compon
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: ManagementComponent, pathMatch: 'full' },
+      { path: 'witnesses', component: WitnessesViewComponent},
       { path: 'settings', component: SettingsComponent}
     ])
   ],

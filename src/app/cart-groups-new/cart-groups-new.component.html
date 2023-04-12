@@ -13,17 +13,35 @@
     </div>
     <div class="cart-shift-time">
         <span>Время</span>
-        <span><input id="cart-groups-new-time" type="text" [(ngModel)]="schedule.time" /></span>
+        <select id="cart-groups-new-time" [(ngModel)]="schedule.time">
+            <option *ngFor="let time of times" value={{time.time}}>{{time.time}}</option>
+        </select>
     </div>
     <table>
         <thead>
             <tr><th>#</th><th>Возвещатель</th></tr>
         </thead>
         <tbody>
-            <tr><td>1.</td><td><input id="shift-1" type="text" [(ngModel)]="schedule.witn[0]" /></td></tr>
-            <tr><td>2.</td><td><input id="shift-2" type="text" [(ngModel)]="schedule.witn[1]" /></td></tr>
-            <tr><td>3.</td><td><input id="shift-3" type="text" [(ngModel)]="schedule.witn[2]" /></td></tr>
-            <tr><td>4.</td><td><input id="shift-4" type="text" [(ngModel)]="schedule.witn[3]" /></td></tr>
+            <tr><td>1.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[0]">
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>2.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[1]">
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>3.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[2]">
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
+            <tr><td>4.</td><td>
+                <select id="cart-groups-new-weekday" [(ngModel)]="schedule.witn[3]">
+                    <option *ngFor="let witn of witnesses" value={{witn}}>{{witn}}</option>
+                </select>
+            </td></tr>
         </tbody>
     </table>
     <button mat-button (click)="onClickSave()">Добавить</button>

@@ -1,38 +1,63 @@
-<h1 class="title">Settings</h1>
-<div class="cart-settings-panel">
-  <div class="cart-settings-section">
-    <ul>
-      <li *ngFor="let setting of settings">
-        <div class="cart-setting">
-          <span class="setting-label">{{setting.label}}</span> <br />
-          <input type="text" [(ngModel)]="setting.value" class="setting-input" />
-          <span class="setting-value">{{setting.value}}</span>
-        </div>
-      </li>
-    </ul>
+<div class="settings-container">  
+  <div class="cart-settings-panel">
+    <div class="cart-settings-section cart-settings-section-1">
+      <h1 class="title">Натройки Telegram</h1>
+      <ul>
+        <li *ngFor="let setting of settings">
+          <div class="cart-setting">
+            <span class="setting-label">{{setting.label}}</span> <br />
+            <input type="text" [(ngModel)]="setting.value" class="setting-input" />
+          </div>
+        </li>
+      </ul>
 
-    <button mat-button class="test-button" (click)="onClickTest()">Test</button>        
-    <button mat-button class="save-button" (click)="onClickStore()">Save</button>
-  </div>
+      <button mat-button class="test-button" (click)="onClickTest()">Тест</button>        
+      <button mat-button class="save-button" (click)="onClickStore()">Сохранить</button>
+    </div>
 
-  <div class="cart-settings-section">
-    <table class="items-table">
-      <thead>
-        <tr>
-          <th class="table-header">Name</th>
-          <th class="table-header">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items; let i = index;">
-          <td><input type="text" [(ngModel)]="item.name" class="table-input"></td>
-          <td>
-            <button class="delete-button" (click)="removeItem(i)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="add-row-button" (click)="addItem()">Add Row</button>
-    <button class="save-item-button" (click)="saveItem(0)">Save</button>
+    <div class="cart-settings-section cart-settings-section-2">
+      <span class="title">Список стендов</span>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th class="table-header">Название</th>
+            <th class="table-header"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i = index;">
+            <td><input type="text" [(ngModel)]="item.name" class="table-input"></td>
+            <td>
+              <button class="delete-button" (click)="removeItem(i)">Удалить</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-button" (click)="addItem()">Добавить</button>
+      <button class="save-item-button" (click)="saveItem(0)">Сохранить</button>
+    </div>
+
+    <div class="cart-settings-section cart-settings-section-3">
+      <span  class="title">Список групп по времени</span>
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th class="table-header">Время</th>
+            <th class="table-header"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let time of times; let i = index;">
+            <td><input type="text" [(ngModel)]="time.time" class="table-input"></td>
+            <td>
+              <button class="delete-button" (click)="removeTime(i)">Удалить</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-row-button" (click)="addTime()">Добавить</button>
+      <button class="save-item-button" (click)="saveTime(0)">Сохранить</button>
+    </div>
+
   </div>
 </div>
