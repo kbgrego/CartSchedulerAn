@@ -49,6 +49,8 @@ export class TelegramBotService {
 
     const url = `${this.botLink}/sendMessage`;
 
+    this.sleep(150);
+
     return this.http.post<TelegramApiResponse>(url, JSON.stringify(formData), { headers }).pipe(
       map(response => {
         const messageId = response.result?.message_id;
@@ -59,6 +61,7 @@ export class TelegramBotService {
       }),
       catchError(error => throwError(error))
     );
+    
   }
 
   sendSchedule(schedule: Schedule): Observable<number> {
